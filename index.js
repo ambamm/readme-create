@@ -25,17 +25,34 @@ inquirer
     },
     {
       type: 'input',
-      name: 'food',
-      message: 'What is your favorite food?',
+      name: 'Usage',
+      message: 'How do you efficiently use this app?',
+    },
+    {
+      type: 'list',
+      name: 'license',
+      message: 'Choose a license from the list below:',
+      choices: ['MIT', 'Apache', 'GNU'],
     },
     {
       type: 'input',
-      name: 'github',
-      message: 'Enter your GitHub Username',
+      name: 'Contributors',
+      message: 'Who are the contributors of the project?',
     },
     {
       type: 'input',
-      name: 'linkedin',
-      message: 'Enter your LinkedIn URL.',
+      name: 'test',
+      message: 'What tests were performed on the app?',
     },
+    {
+      type: 'input',
+      name: 'Github',
+      message: 'What is your Github username',
+    },
+    {
+      type: 'input',
+      name: 'Email',
+      message: 'What is your email?',
+    },
+    
   ])

@@ -7,7 +7,7 @@ const  generateMarkDown = require('./utils/generatemarkDown')
 
 //from there, we have thr gigantic string of text that we need to get onto the readme
 
-const questions = [
+const questions = [  //the input the user will be providing. npm doc is the tool box and these properties are our tools
     {
       type: 'input',
       name: 'Name',
@@ -59,6 +59,9 @@ const questions = [
 //taking in 2 para
   function writeToFile(fileName, data) {
     return fs.writeFileSync(path.join (process.cwd(),fileName), data)  //what data to include. Return generates the file system 
+    //the fun is "write2file"
+    //2 params, fileName and data,<- data is what we're naming it
+    //want to return the writefilesync function and join in the current workin directory, wt=uth the filename and the data
   }
 
 // TODO: Create a function to initialize app

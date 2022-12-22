@@ -1,13 +1,13 @@
 const inquirer = require('inquirer');
 const fs = require('fs');
-const {url} = require('inspector');
-
+// const {url} = require('inspec(tor');
+const path = require('path')
+const  generateMarkDown = require('./utils/generatemarkDown')
 //ask all the questions using the inquire toolbox/prompt
 
 //from there, we have thr gigantic string of text that we need to get onto the readme
 
-inquirer
-  .prompt([
+const questions = [
     {
       type: 'input',
       name: 'Name',
@@ -21,7 +21,7 @@ inquirer
     {
       type: 'input',
       name: 'Installation',
-      message: 'Please provide a short installation guide',
+      message: 'what command should be used to install dependencies?',
     },
     {
       type: 'input',
@@ -32,7 +32,7 @@ inquirer
       type: 'list',
       name: 'license',
       message: 'Choose a license from the list below:',
-      choices: ['MIT', 'Apache', 'GNU'],
+      choices: ['MIT', 'Apache', 'GNU', 'None'],
     },
     {
       type: 'input',
@@ -41,8 +41,8 @@ inquirer
     },
     {
       type: 'input',
-      name: 'test',
-      message: 'What tests were performed on the app?',
+      name: 'Test',
+      message: 'What command should be used to run tests?',
     },
     {
       type: 'input',
@@ -55,4 +55,19 @@ inquirer
       message: 'What is your email?',
     },
     
-  ])
+  ]
+//taking in 2 para
+  function writeToFile(fileName, data) {
+    return fs.writeFileSync(path.join (process.cwd(),fileName), data)  //what data to include. Return generates the file system 
+  }
+
+// TODO: Create a function to initialize app
+function init() {
+  inquirer.prompt (questions).then((inquirerResponses) => {
+    console.log('generating your readMe')
+    writeToFile('readMe.md', generateMarkDown({...inquirerResponses}))
+  })
+}
+
+// Function call to initialize app
+init();
